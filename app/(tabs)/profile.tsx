@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
   profileImageContainer: {
     width: 100,
     height: 100,
-    borderRadius: 12,
+    borderRadius: 50,
     overflow: 'hidden',
     borderWidth: 4,
     borderColor: '#ffffff',
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
   statIcon: {
     width: 40,
     height: 40,
-    borderRadius: 8,
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 8,
@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
   certificationIcon: {
     width: 40,
     height: 40,
-    borderRadius: 8,
+    borderRadius: 20,
     backgroundColor: '#fef3c7',
     alignItems: 'center',
     justifyContent: 'center',
@@ -364,7 +364,7 @@ const styles = StyleSheet.create({
   menuIcon: {
     width: 40,
     height: 40,
-    borderRadius: 8,
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 16,
@@ -394,7 +394,7 @@ const styles = StyleSheet.create({
   activityIcon: {
     width: 32,
     height: 32,
-    borderRadius: 8,
+    borderRadius: 16,
     backgroundColor: '#f1f5f9',
     alignItems: 'center',
     justifyContent: 'center',
