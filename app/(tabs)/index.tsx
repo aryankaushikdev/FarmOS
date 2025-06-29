@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
   profileContainer: {
     width: 50,
     height: 50,
-    borderRadius: 25,
+    borderRadius: 8,
     overflow: 'hidden',
     borderWidth: 2,
     borderColor: '#ffffff',
@@ -360,7 +360,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     paddingHorizontal: 16,
     paddingVertical: 12,
-    borderRadius: 25,
+    borderRadius: 12,
     marginBottom: 20,
   },
   searchPlaceholder: {
@@ -484,7 +484,7 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     backgroundColor: '#fbbf24',
-    borderRadius: 5,
+    borderRadius: 2,
   },
   farmingAdvice: {
     backgroundColor: '#f0f9ff',
@@ -635,7 +635,7 @@ const styles = StyleSheet.create({
   actionIcon: {
     width: 48,
     height: 48,
-    borderRadius: 24,
+    borderRadius: 8,
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     alignItems: 'center',
     justifyContent: 'center',
@@ -671,7 +671,7 @@ const styles = StyleSheet.create({
   analyticsIcon: {
     width: 50,
     height: 50,
-    borderRadius: 25,
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 8,

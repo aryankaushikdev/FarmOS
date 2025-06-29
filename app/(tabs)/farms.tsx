@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
   backButton: {
     width: 40,
     height: 40,
-    borderRadius: 20,
+    borderRadius: 8,
     backgroundColor: '#f1f5f9',
     alignItems: 'center',
     justifyContent: 'center',
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
   notificationButton: {
     width: 40,
     height: 40,
-    borderRadius: 20,
+    borderRadius: 8,
     backgroundColor: '#f1f5f9',
     alignItems: 'center',
     justifyContent: 'center',
@@ -370,7 +370,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#dcfce7',
     paddingHorizontal: 12,
     paddingVertical: 6,
-    borderRadius: 20,
+    borderRadius: 8,
   },
   profitIncrease: {
     fontSize: 16,
@@ -590,7 +590,7 @@ const styles = StyleSheet.create({
   insightIcon: {
     width: 40,
     height: 40,
-    borderRadius: 20,
+    borderRadius: 8,
     backgroundColor: '#f8fafc',
     alignItems: 'center',
     justifyContent: 'center',
