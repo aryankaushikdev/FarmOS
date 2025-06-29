@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowLeft, Bell, Mic, TrendingUp, MapPin, Calendar, Droplets, Thermometer, Zap, Target, DollarSign } from 'lucide-react-native';
+import { ArrowLeft, Bell, TrendingUp, MapPin, Calendar, Droplets, Thermometer, Zap, Target, PoundSterling } from 'lucide-react-native';
 
 export default function MyFarmScreen() {
   const [showOptimized, setShowOptimized] = useState(false);
@@ -144,7 +144,7 @@ export default function MyFarmScreen() {
               colors={['#16a34a', '#15803d']}
               style={styles.profitGradient}
             >
-              <DollarSign size={32} color="#ffffff" />
+              <PoundSterling size={32} color="#ffffff" />
               <View style={styles.profitDetails}>
                 <Text style={styles.profitAmount}>+£256</Text>
                 <Text style={styles.profitText}>per hectare increase</Text>
@@ -176,24 +176,6 @@ export default function MyFarmScreen() {
                 </Text>
               </View>
             </View>
-          </View>
-
-          {/* Action Buttons */}
-          <View style={styles.actionButtons}>
-            <TouchableOpacity style={styles.applyButton}>
-              <LinearGradient
-                colors={['#16a34a', '#15803d']}
-                style={styles.applyGradient}
-              >
-                <Zap size={20} color="#ffffff" />
-                <Text style={styles.applyButtonText}>Apply AI Recommendation</Text>
-              </LinearGradient>
-            </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.voiceButton}>
-              <Mic size={20} color="#3b82f6" />
-              <Text style={styles.voiceButtonText}>Ask: "Optimize Field 12"</Text>
-            </TouchableOpacity>
           </View>
         </View>
 
@@ -577,41 +559,6 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     flex: 1,
     lineHeight: 20,
-  },
-  actionButtons: {
-    gap: 12,
-  },
-  applyButton: {
-    borderRadius: 16,
-    overflow: 'hidden',
-  },
-  applyGradient: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 16,
-  },
-  applyButtonText: {
-    fontSize: 16,
-    fontFamily: 'Inter-SemiBold',
-    color: '#ffffff',
-    marginLeft: 8,
-  },
-  voiceButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#eff6ff',
-    paddingVertical: 16,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: '#3b82f6',
-  },
-  voiceButtonText: {
-    fontSize: 14,
-    fontFamily: 'Inter-Medium',
-    color: '#3b82f6',
-    marginLeft: 8,
   },
   insightsSection: {
     paddingHorizontal: 20,

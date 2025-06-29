@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Search, Mic, Sun, Thermometer, Droplets, Wind, Sunrise, Sunset, TrendingUp, TrendingDown, Clock, Star, MapPin } from 'lucide-react-native';
+import { Search, Mic, Sun, Thermometer, Droplets, Wind, Sunrise, Sunset, TrendingUp, TrendingDown, Clock, Star, MapPin, ArrowRight, Target } from 'lucide-react-native';
 
 export default function HomeScreen() {
   const currentDate = new Date('2024-06-15').toLocaleDateString('en-GB', {
@@ -191,6 +191,28 @@ export default function HomeScreen() {
                 </Text>
               </View>
             </View>
+          </View>
+
+          {/* Immediate Actions */}
+          <View style={styles.immediateActionsSection}>
+            <Text style={styles.sectionTitle}>Immediate Actions</Text>
+            <TouchableOpacity style={styles.actionCard}>
+              <LinearGradient
+                colors={['#3b82f6', '#1d4ed8']}
+                style={styles.actionGradient}
+              >
+                <View style={styles.actionContent}>
+                  <View style={styles.actionIcon}>
+                    <Target size={24} color="#ffffff" />
+                  </View>
+                  <View style={styles.actionText}>
+                    <Text style={styles.actionTitle}>Plant wheat in plot 3</Text>
+                    <Text style={styles.actionSubtitle}>Based on current weather and soil insights</Text>
+                  </View>
+                  <ArrowRight size={20} color="#ffffff" />
+                </View>
+              </LinearGradient>
+            </TouchableOpacity>
           </View>
 
           {/* Farm Analytics */}
@@ -589,6 +611,49 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Regular',
     color: '#d1fae5',
     lineHeight: 18,
+  },
+  immediateActionsSection: {
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+  actionCard: {
+    borderRadius: 16,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  actionGradient: {
+    padding: 20,
+  },
+  actionContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  actionIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 16,
+  },
+  actionText: {
+    flex: 1,
+  },
+  actionTitle: {
+    fontSize: 18,
+    fontFamily: 'Inter-Bold',
+    color: '#ffffff',
+    marginBottom: 4,
+  },
+  actionSubtitle: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#dbeafe',
   },
   analyticsSection: {
     paddingHorizontal: 20,
