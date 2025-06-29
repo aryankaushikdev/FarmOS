@@ -2,58 +2,58 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowLeft, Bell, CloudRain, Thermometer, Droplets, Plus, TrendingUp, Calendar, ChartBar as BarChart3 } from 'lucide-react-native';
+import { ArrowLeft, Bell, Sun, Thermometer, Droplets, Plus, TrendingUp, Calendar, ChartBar as BarChart3 } from 'lucide-react-native';
 
 export default function StatisticsScreen() {
   const notes = [
     {
       id: 1,
-      date: 'Dec 15',
+      date: 'Jun 15',
       time: '2:30pm',
-      title: 'Excellent winter wheat germination in heavy Kent clay, 92% emergence rate achieved',
-      image: 'https://images.pexels.com/photos/326082/pexels-photo-326082.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop',
-      category: 'Planting'
+      title: 'Spring barley showing excellent grain fill, harvest expected in 10-14 days',
+      image: 'https://images.pexels.com/photos/221016/pexels-photo-221016.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop',
+      category: 'Harvest'
     },
     {
       id: 2,
-      date: 'Dec 14',
+      date: 'Jun 14',
       time: '4:15pm',
-      title: 'Soil moisture levels high after Thames Estuary rainfall, drainage systems working well',
-      image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop',
-      category: 'Soil'
+      title: 'Sugar beet crop looking healthy, applied aphid monitoring traps in warm weather',
+      image: 'https://images.pexels.com/photos/4750270/pexels-photo-4750270.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop',
+      category: 'Pest Control'
     },
     {
       id: 3,
-      date: 'Dec 13',
+      date: 'Jun 13',
       time: '11:45am',
-      title: 'Applied organic fertilizer to north field, expecting 12% yield increase in spring',
-      image: 'https://images.pexels.com/photos/1595105/pexels-photo-1595105.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop',
-      category: 'Fertilization'
+      title: 'Potato earthing up completed, blight protection spray applied before forecast rain',
+      image: 'https://images.pexels.com/photos/144248/potatoes-vegetables-erdfrucht-bio-144248.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop',
+      category: 'Cultivation'
     },
     {
       id: 4,
-      date: 'Dec 12',
+      date: 'Jun 12',
       time: '9:20am',
-      title: 'Pest monitoring shows minimal slug activity despite wet conditions, treatment effective',
-      image: 'https://images.pexels.com/photos/1595106/pexels-photo-1595106.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop',
-      category: 'Pest Control'
+      title: 'Soil moisture levels good after recent showers, ideal for summer crop development',
+      image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop',
+      category: 'Soil'
     },
   ];
 
   const weeklyPredictions = [
-    { day: 'Mon', temp: '6°C', rain: '12mm', condition: 'Light Rain', icon: '🌦️' },
-    { day: 'Tue', temp: '9°C', rain: '3mm', condition: 'Partly Cloudy', icon: '⛅' },
-    { day: 'Wed', temp: '11°C', rain: '0mm', condition: 'Sunny', icon: '☀️' },
-    { day: 'Thu', temp: '8°C', rain: '15mm', condition: 'Heavy Rain', icon: '🌧️' },
-    { day: 'Fri', temp: '7°C', rain: '8mm', condition: 'Overcast', icon: '☁️' },
-    { day: 'Sat', temp: '10°C', rain: '2mm', condition: 'Partly Cloudy', icon: '⛅' },
-    { day: 'Sun', temp: '12°C', rain: '0mm', condition: 'Clear', icon: '☀️' },
+    { day: 'Mon', temp: '24°C', rain: '0mm', condition: 'Sunny', icon: '☀️' },
+    { day: 'Tue', temp: '26°C', rain: '0mm', condition: 'Clear', icon: '☀️' },
+    { day: 'Wed', temp: '23°C', rain: '5mm', condition: 'Light Showers', icon: '🌦️' },
+    { day: 'Thu', temp: '21°C', rain: '12mm', condition: 'Showers', icon: '🌧️' },
+    { day: 'Fri', temp: '22°C', rain: '2mm', condition: 'Partly Cloudy', icon: '⛅' },
+    { day: 'Sat', temp: '25°C', rain: '0mm', condition: 'Sunny', icon: '☀️' },
+    { day: 'Sun', temp: '27°C', rain: '0mm', condition: 'Hot', icon: '🌞' },
   ];
 
   const yieldPredictions = [
-    { crop: 'Winter Wheat', current: '6.8 t/ha', predicted: '7.6 t/ha', change: '+12%', color: '#16a34a' },
-    { crop: 'Winter Barley', current: '5.2 t/ha', predicted: '5.7 t/ha', change: '+10%', color: '#3b82f6' },
-    { crop: 'Oil Seed Rape', current: '3.1 t/ha', predicted: '3.5 t/ha', change: '+13%', color: '#f59e0b' },
+    { crop: 'Spring Barley', current: '5.8 t/ha', predicted: '6.4 t/ha', change: '+10%', color: '#16a34a' },
+    { crop: 'Sugar Beet', current: '68 t/ha', predicted: '75 t/ha', change: '+10%', color: '#3b82f6' },
+    { crop: 'Potatoes', current: '42 t/ha', predicted: '48 t/ha', change: '+14%', color: '#f59e0b' },
   ];
 
   return (
@@ -79,17 +79,17 @@ export default function StatisticsScreen() {
           >
             <View style={styles.weatherHeader}>
               <View>
-                <Text style={styles.locationText}>Gravesend, Kent - 15 Dec 2024</Text>
-                <Text style={styles.temperature}>8°C</Text>
-                <Text style={styles.humidity}>Humidity 85%</Text>
+                <Text style={styles.locationText}>Gravesend, Kent - 15 Jun 2024</Text>
+                <Text style={styles.temperature}>22°C</Text>
+                <Text style={styles.humidity}>Humidity 62%</Text>
               </View>
               <View style={styles.weatherIconContainer}>
-                <CloudRain size={60} color="#ffffff" />
-                <Text style={styles.weatherCondition}>Light Rain</Text>
+                <Sun size={60} color="#ffffff" />
+                <Text style={styles.weatherCondition}>Sunny</Text>
               </View>
             </View>
             <Text style={styles.weatherAdvice}>
-              🌾 Excellent conditions for winter crop establishment. Thames Estuary maritime climate ideal for root development in heavy clay soils.
+              🌾 Perfect harvest conditions for spring barley. Dry weather ideal for combining. Monitor sugar beet for aphid activity in warm temperatures.
             </Text>
           </LinearGradient>
         </View>
@@ -110,9 +110,48 @@ export default function StatisticsScreen() {
           </ScrollView>
         </View>
 
+        {/* June-July Outlook */}
+        <View style={styles.outlookSection}>
+          <Text style={styles.sectionTitle}>June-July Growing Outlook</Text>
+          <View style={styles.outlookCard}>
+            <View style={styles.outlookHeader}>
+              <Text style={styles.outlookTitle}>Summer Growing Season</Text>
+              <Text style={styles.outlookSubtitle}>Excellent conditions for crop development</Text>
+            </View>
+            
+            <View style={styles.outlookStats}>
+              <View style={styles.outlookStat}>
+                <Thermometer size={20} color="#f59e0b" />
+                <Text style={styles.outlookStatLabel}>Temperature Range</Text>
+                <Text style={styles.outlookStatValue}>18-26°C</Text>
+              </View>
+              <View style={styles.outlookStat}>
+                <Droplets size={20} color="#3b82f6" />
+                <Text style={styles.outlookStatLabel}>Rainfall Expected</Text>
+                <Text style={styles.outlookStatValue}>45-60mm</Text>
+              </View>
+              <View style={styles.outlookStat}>
+                <Sun size={20} color="#fbbf24" />
+                <Text style={styles.outlookStatLabel}>Sunshine</Text>
+                <Text style={styles.outlookStatValue}>8-9 hrs/day</Text>
+              </View>
+            </View>
+
+            <View style={styles.outlookAdvice}>
+              <Text style={styles.outlookAdviceTitle}>Key Activities June-July</Text>
+              <Text style={styles.outlookAdviceText}>
+                • Spring barley harvest (late June)
+                • Sugar beet pest monitoring & cultivation
+                • Potato blight prevention & earthing
+                • Winter crop planning & soil preparation
+              </Text>
+            </View>
+          </View>
+        </View>
+
         {/* Yield Predictions */}
         <View style={styles.yieldSection}>
-          <Text style={styles.sectionTitle}>Yield Predictions for Kent</Text>
+          <Text style={styles.sectionTitle}>Summer Yield Predictions for Kent</Text>
           <View style={styles.yieldCards}>
             {yieldPredictions.map((crop, index) => (
               <View key={index} style={styles.yieldCard}>
@@ -152,7 +191,7 @@ export default function StatisticsScreen() {
             {notes.map((note) => (
               <View key={note.id} style={styles.noteItem}>
                 <View style={styles.noteImageContainer}>
-                  <Image src={note.image} style={styles.noteImage} alt="Note" />
+                  <Image source={{ uri: note.image }} style={styles.noteImage} />
                   <View style={styles.noteCategoryBadge}>
                     <Text style={styles.noteCategoryText}>{note.category}</Text>
                   </View>
@@ -189,15 +228,15 @@ export default function StatisticsScreen() {
               <Text style={styles.statLabel}>Hectares Managed</Text>
             </View>
             <View style={styles.statCard}>
-              <Text style={styles.statNumber}>£2,180</Text>
+              <Text style={styles.statNumber}>£3,240</Text>
               <Text style={styles.statLabel}>Weekly Revenue</Text>
             </View>
             <View style={styles.statCard}>
-              <Text style={styles.statNumber}>91%</Text>
+              <Text style={styles.statNumber}>94%</Text>
               <Text style={styles.statLabel}>Crop Health Score</Text>
             </View>
             <View style={styles.statCard}>
-              <Text style={styles.statNumber}>28</Text>
+              <Text style={styles.statNumber}>12</Text>
               <Text style={styles.statLabel}>Days to Harvest</Text>
             </View>
           </View>
@@ -360,6 +399,74 @@ const styles = StyleSheet.create({
     color: '#6b7280',
     textAlign: 'center',
   },
+  outlookSection: {
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+  outlookCard: {
+    backgroundColor: '#ffffff',
+    borderRadius: 20,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  outlookHeader: {
+    marginBottom: 20,
+  },
+  outlookTitle: {
+    fontSize: 18,
+    fontFamily: 'Inter-Bold',
+    color: '#1f2937',
+    marginBottom: 4,
+  },
+  outlookSubtitle: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#6b7280',
+  },
+  outlookStats: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  outlookStat: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  outlookStatLabel: {
+    fontSize: 10,
+    fontFamily: 'Inter-Regular',
+    color: '#6b7280',
+    marginTop: 8,
+    marginBottom: 4,
+    textAlign: 'center',
+  },
+  outlookStatValue: {
+    fontSize: 14,
+    fontFamily: 'Inter-SemiBold',
+    color: '#1f2937',
+    textAlign: 'center',
+  },
+  outlookAdvice: {
+    backgroundColor: '#f8fafc',
+    borderRadius: 12,
+    padding: 16,
+  },
+  outlookAdviceTitle: {
+    fontSize: 14,
+    fontFamily: 'Inter-SemiBold',
+    color: '#1f2937',
+    marginBottom: 8,
+  },
+  outlookAdviceText: {
+    fontSize: 12,
+    fontFamily: 'Inter-Regular',
+    color: '#6b7280',
+    lineHeight: 18,
+  },
   yieldSection: {
     paddingHorizontal: 20,
     marginBottom: 20,
@@ -452,7 +559,6 @@ const styles = StyleSheet.create({
   noteImage: {
     width: '100%',
     height: '100%',
-    objectFit: 'cover',
   },
   noteCategoryBadge: {
     position: 'absolute',

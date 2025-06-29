@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Search, Mic, CloudRain, Thermometer, Droplets, Wind, Sunrise, Sunset, TrendingUp, TrendingDown, Clock, Star, MapPin } from 'lucide-react-native';
+import { Search, Mic, Sun, Thermometer, Droplets, Wind, Sunrise, Sunset, TrendingUp, TrendingDown, Clock, Star, MapPin } from 'lucide-react-native';
 
 export default function HomeScreen() {
-  const currentDate = new Date().toLocaleDateString('en-GB', {
+  const currentDate = new Date('2024-06-15').toLocaleDateString('en-GB', {
     weekday: 'long',
     day: '2-digit',
     month: 'short',
@@ -13,30 +13,30 @@ export default function HomeScreen() {
   });
 
   const weeklyForecast = [
-    { day: 'Today', temp: '8°C', condition: 'Cloudy', icon: '☁️', rain: '70%' },
-    { day: 'Tomorrow', temp: '11°C', condition: 'Light Rain', icon: '🌦️', rain: '80%' },
-    { day: 'Wed', temp: '6°C', condition: 'Rainy', icon: '🌧️', rain: '90%' },
-    { day: 'Thu', temp: '9°C', condition: 'Partly Cloudy', icon: '⛅', rain: '40%' },
-    { day: 'Fri', temp: '12°C', condition: 'Overcast', icon: '☁️', rain: '60%' },
+    { day: 'Today', temp: '22°C', condition: 'Sunny', icon: '☀️', rain: '5%' },
+    { day: 'Tomorrow', temp: '24°C', condition: 'Partly Cloudy', icon: '⛅', rain: '15%' },
+    { day: 'Wed', temp: '26°C', condition: 'Sunny', icon: '☀️', rain: '0%' },
+    { day: 'Thu', temp: '23°C', condition: 'Light Showers', icon: '🌦️', rain: '60%' },
+    { day: 'Fri', temp: '21°C', condition: 'Cloudy', icon: '☁️', rain: '30%' },
   ];
 
   const cropRecommendations = [
     { 
-      name: 'Winter Wheat', 
-      image: 'https://images.pexels.com/photos/326082/pexels-photo-326082.jpeg?auto=compress&cs=tinysrgb&w=200&h=120&fit=crop',
-      season: 'Plant Now',
+      name: 'Spring Barley', 
+      image: 'https://images.pexels.com/photos/221016/pexels-photo-221016.jpeg?auto=compress&cs=tinysrgb&w=200&h=120&fit=crop',
+      season: 'Harvest Ready',
       yield: 'High'
     },
     { 
-      name: 'Winter Barley', 
-      image: 'https://images.pexels.com/photos/221016/pexels-photo-221016.jpeg?auto=compress&cs=tinysrgb&w=200&h=120&fit=crop',
-      season: 'Ideal Season',
-      yield: 'Medium'
+      name: 'Sugar Beet', 
+      image: 'https://images.pexels.com/photos/4750270/pexels-photo-4750270.jpeg?auto=compress&cs=tinysrgb&w=200&h=120&fit=crop',
+      season: 'Growing Well',
+      yield: 'Very High'
     },
     { 
-      name: 'Oil Seed Rape', 
-      image: 'https://images.pexels.com/photos/162209/rapeseed-field-yellow-nature-162209.jpeg?auto=compress&cs=tinysrgb&w=200&h=120&fit=crop',
-      season: 'Spring Ready',
+      name: 'Potatoes', 
+      image: 'https://images.pexels.com/photos/144248/potatoes-vegetables-erdfrucht-bio-144248.jpeg?auto=compress&cs=tinysrgb&w=200&h=120&fit=crop',
+      season: 'Mid Season',
       yield: 'High'
     },
   ];
@@ -51,7 +51,7 @@ export default function HomeScreen() {
           {/* Header */}
           <View style={styles.header}>
             <View>
-              <Text style={styles.greeting}>Good Morning, Farmer</Text>
+              <Text style={styles.greeting}>Good Afternoon, Farmer</Text>
               <Text style={styles.date}>{currentDate}</Text>
               <View style={styles.locationContainer}>
                 <MapPin size={16} color="#d1fae5" />
@@ -81,16 +81,16 @@ export default function HomeScreen() {
               <View>
                 <Text style={styles.locationText}>Gravesend, Kent</Text>
                 <View style={styles.temperatureRow}>
-                  <Text style={styles.temperature}>+8°C</Text>
+                  <Text style={styles.temperature}>+22°C</Text>
                   <View style={styles.tempRange}>
-                    <Text style={styles.tempRangeText}>H: 11°C</Text>
-                    <Text style={styles.tempRangeText}>L: 4°C</Text>
+                    <Text style={styles.tempRangeText}>H: 26°C</Text>
+                    <Text style={styles.tempRangeText}>L: 16°C</Text>
                   </View>
                 </View>
               </View>
               <View style={styles.weatherIcon}>
-                <CloudRain size={40} color="#fbbf24" />
-                <Text style={styles.weatherCondition}>Cloudy</Text>
+                <Sun size={40} color="#fbbf24" />
+                <Text style={styles.weatherCondition}>Sunny</Text>
               </View>
             </View>
 
@@ -98,26 +98,26 @@ export default function HomeScreen() {
             <View style={styles.weatherDetails}>
               <View style={styles.weatherDetailItem}>
                 <Text style={styles.weatherDetailLabel}>Humidity</Text>
-                <Text style={styles.weatherDetailValue}>82%</Text>
+                <Text style={styles.weatherDetailValue}>62%</Text>
               </View>
               <View style={styles.weatherDetailItem}>
                 <Text style={styles.weatherDetailLabel}>Rainfall</Text>
-                <Text style={styles.weatherDetailValue}>8.7mm</Text>
+                <Text style={styles.weatherDetailValue}>2.1mm</Text>
               </View>
               <View style={styles.weatherDetailItem}>
                 <Text style={styles.weatherDetailLabel}>Pressure</Text>
-                <Text style={styles.weatherDetailValue}>1018 hPa</Text>
+                <Text style={styles.weatherDetailValue}>1022 hPa</Text>
               </View>
               <View style={styles.weatherDetailItem}>
                 <Text style={styles.weatherDetailLabel}>Wind</Text>
-                <Text style={styles.weatherDetailValue}>12 mph</Text>
+                <Text style={styles.weatherDetailValue}>8 mph</Text>
               </View>
             </View>
 
             {/* Sun Times */}
             <View style={styles.sunTimes}>
               <View style={styles.sunTimeItem}>
-                <Text style={styles.sunTime}>7:58 am</Text>
+                <Text style={styles.sunTime}>4:43 am</Text>
                 <Text style={styles.sunLabel}>Sunrise</Text>
               </View>
               <View style={styles.sunPath}>
@@ -125,7 +125,7 @@ export default function HomeScreen() {
                 <View style={styles.sunPosition} />
               </View>
               <View style={styles.sunTimeItem}>
-                <Text style={styles.sunTime}>3:52 pm</Text>
+                <Text style={styles.sunTime}>9:21 pm</Text>
                 <Text style={styles.sunLabel}>Sunset</Text>
               </View>
             </View>
@@ -133,7 +133,7 @@ export default function HomeScreen() {
             {/* Farming Advice */}
             <View style={styles.farmingAdvice}>
               <Text style={styles.adviceText}>
-                🌾 Good conditions for winter wheat establishment. Thames Estuary climate ideal for root development in heavy clay soils.
+                🌾 Perfect conditions for spring barley harvest. Dry weather ideal for combining operations. Monitor sugar beet for aphid activity in warm conditions.
               </Text>
             </View>
           </View>
@@ -154,6 +154,45 @@ export default function HomeScreen() {
             </ScrollView>
           </View>
 
+          {/* June-July Predictions */}
+          <View style={styles.monthlySection}>
+            <Text style={styles.sectionTitle}>June-July Outlook</Text>
+            <View style={styles.monthlyCard}>
+              <View style={styles.monthlyHeader}>
+                <Text style={styles.monthlyTitle}>Summer Growing Season</Text>
+                <Text style={styles.monthlySubtitle}>Optimal conditions expected</Text>
+              </View>
+              
+              <View style={styles.monthlyStats}>
+                <View style={styles.monthlyStat}>
+                  <Thermometer size={20} color="#f59e0b" />
+                  <Text style={styles.monthlyStatLabel}>Avg Temperature</Text>
+                  <Text style={styles.monthlyStatValue}>19-24°C</Text>
+                </View>
+                <View style={styles.monthlyStat}>
+                  <Droplets size={20} color="#3b82f6" />
+                  <Text style={styles.monthlyStatLabel}>Expected Rainfall</Text>
+                  <Text style={styles.monthlyStatValue}>45-55mm</Text>
+                </View>
+                <View style={styles.monthlyStat}>
+                  <Sun size={20} color="#fbbf24" />
+                  <Text style={styles.monthlyStatLabel}>Sunshine Hours</Text>
+                  <Text style={styles.monthlyStatValue}>7-8 hrs/day</Text>
+                </View>
+              </View>
+
+              <View style={styles.monthlyAdvice}>
+                <Text style={styles.monthlyAdviceTitle}>Key Activities</Text>
+                <Text style={styles.monthlyAdviceText}>
+                  • Spring barley harvest (late June)
+                  • Sugar beet cultivation and pest monitoring
+                  • Potato earthing up and blight prevention
+                  • Prepare for winter crop planning
+                </Text>
+              </View>
+            </View>
+          </View>
+
           {/* Farm Analytics */}
           <View style={styles.analyticsSection}>
             <Text style={styles.sectionTitle}>Farm Analytics</Text>
@@ -163,28 +202,28 @@ export default function HomeScreen() {
                   <TrendingUp size={24} color="#ffffff" />
                 </View>
                 <Text style={styles.analyticsLabel}>Yield Forecast</Text>
-                <Text style={styles.analyticsValue}>+15%</Text>
+                <Text style={styles.analyticsValue}>+18%</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.analyticsItem}>
                 <View style={[styles.analyticsIcon, { backgroundColor: '#10b981' }]}>
                   <Droplets size={24} color="#ffffff" />
                 </View>
                 <Text style={styles.analyticsLabel}>Soil Moisture</Text>
-                <Text style={styles.analyticsValue}>High</Text>
+                <Text style={styles.analyticsValue}>Good</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.analyticsItem}>
                 <View style={[styles.analyticsIcon, { backgroundColor: '#f59e0b' }]}>
                   <Clock size={24} color="#ffffff" />
                 </View>
                 <Text style={styles.analyticsLabel}>Harvest Time</Text>
-                <Text style={styles.analyticsValue}>4 weeks</Text>
+                <Text style={styles.analyticsValue}>2 weeks</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.analyticsItem}>
                 <View style={[styles.analyticsIcon, { backgroundColor: '#16a34a' }]}>
                   <Star size={24} color="#ffffff" />
                 </View>
                 <Text style={styles.analyticsLabel}>Crop Health</Text>
-                <Text style={styles.analyticsValue}>Good</Text>
+                <Text style={styles.analyticsValue}>Excellent</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -192,7 +231,7 @@ export default function HomeScreen() {
           {/* Crop Recommendations */}
           <View style={styles.cropsSection}>
             <View style={styles.sectionHeader}>
-              <Text style={styles.sectionTitle}>Recommended Crops for Kent</Text>
+              <Text style={styles.sectionTitle}>Current Crops - Kent</Text>
               <TouchableOpacity>
                 <Text style={styles.viewAllText}>View all</Text>
               </TouchableOpacity>
@@ -222,18 +261,18 @@ export default function HomeScreen() {
             <View style={styles.marketGrid}>
               <View style={styles.marketItem}>
                 <Text style={styles.marketCrop}>Wheat</Text>
-                <Text style={styles.marketPrice}>£195/tonne</Text>
-                <Text style={styles.marketChange}>+1.8%</Text>
+                <Text style={styles.marketPrice}>£210/tonne</Text>
+                <Text style={styles.marketChange}>+2.4%</Text>
               </View>
               <View style={styles.marketItem}>
                 <Text style={styles.marketCrop}>Barley</Text>
-                <Text style={styles.marketPrice}>£175/tonne</Text>
-                <Text style={styles.marketChange}>-0.5%</Text>
+                <Text style={styles.marketPrice}>£185/tonne</Text>
+                <Text style={styles.marketChange}>+1.8%</Text>
               </View>
               <View style={styles.marketItem}>
-                <Text style={styles.marketCrop}>OSR</Text>
-                <Text style={styles.marketPrice}>£445/tonne</Text>
-                <Text style={styles.marketChange}>+3.1%</Text>
+                <Text style={styles.marketCrop}>Sugar Beet</Text>
+                <Text style={styles.marketPrice}>£28/tonne</Text>
+                <Text style={styles.marketChange}>+0.9%</Text>
               </View>
             </View>
           </View>
@@ -411,14 +450,14 @@ const styles = StyleSheet.create({
   sunPathLine: {
     position: 'absolute',
     left: 0,
-    right: '60%',
+    right: '20%',
     height: 2,
     backgroundColor: '#fbbf24',
     borderRadius: 1,
   },
   sunPosition: {
     position: 'absolute',
-    right: '60%',
+    right: '20%',
     top: -4,
     width: 10,
     height: 10,
@@ -487,6 +526,69 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Regular',
     color: '#d1fae5',
     textAlign: 'center',
+  },
+  monthlySection: {
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+  monthlyCard: {
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    borderRadius: 20,
+    padding: 20,
+  },
+  monthlyHeader: {
+    marginBottom: 20,
+  },
+  monthlyTitle: {
+    fontSize: 18,
+    fontFamily: 'Inter-Bold',
+    color: '#ffffff',
+    marginBottom: 4,
+  },
+  monthlySubtitle: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#d1fae5',
+  },
+  monthlyStats: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  monthlyStat: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  monthlyStatLabel: {
+    fontSize: 10,
+    fontFamily: 'Inter-Regular',
+    color: '#d1fae5',
+    marginTop: 8,
+    marginBottom: 4,
+    textAlign: 'center',
+  },
+  monthlyStatValue: {
+    fontSize: 14,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
+    textAlign: 'center',
+  },
+  monthlyAdvice: {
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: 12,
+    padding: 16,
+  },
+  monthlyAdviceTitle: {
+    fontSize: 14,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
+    marginBottom: 8,
+  },
+  monthlyAdviceText: {
+    fontSize: 12,
+    fontFamily: 'Inter-Regular',
+    color: '#d1fae5',
+    lineHeight: 18,
   },
   analyticsSection: {
     paddingHorizontal: 20,
