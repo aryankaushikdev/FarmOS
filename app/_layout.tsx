@@ -47,22 +47,7 @@ export default function RootLayout() {
           border-radius: 50%;
           box-shadow: 0 4px 20px rgba(22, 163, 74, 0.3);
           transition: all 0.3s ease;
-          width: 60px;
-          height: 60px;
-          background: linear-gradient(135deg, #16a34a, #15803d);
-          border: 3px solid #ffffff;
         `;
-        
-        // Add hover effects
-        voiceElement.addEventListener('mouseenter', () => {
-          voiceElement.style.transform = 'scale(1.1)';
-          voiceElement.style.boxShadow = '0 6px 25px rgba(22, 163, 74, 0.4)';
-        });
-        
-        voiceElement.addEventListener('mouseleave', () => {
-          voiceElement.style.transform = 'scale(1)';
-          voiceElement.style.boxShadow = '0 4px 20px rgba(22, 163, 74, 0.3)';
-        });
         
         document.body.appendChild(voiceElement);
       };
