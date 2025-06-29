@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Modal, TextInput, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Settings, Bell, User, MapPin, Calendar, Award, TrendingUp, Leaf, Shield, Phone, Mail, Plus, FileText, CreditCard, Building2, X, Save, Edit3, ChevronRight, AlertCircle, CheckCircle, Clock } from 'lucide-react-native';
+import { Settings, Bell, User, MapPin, Calendar, Award, TrendingUp, Leaf, Shield, Phone, Mail, Plus, FileText, CreditCard, Building2, X, Save, CreditCard as Edit3, ChevronRight, CircleAlert as AlertCircle, CircleCheck as CheckCircle, Clock } from 'lucide-react-native';
 
 export default function ProfileScreen() {
   const [activeModal, setActiveModal] = useState<string | null>(null);
