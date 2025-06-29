@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Search, Mic, Sun, Thermometer, Droplets, Wind, Sunrise, Sunset, TrendingUp, TrendingDown, Clock, Star, MapPin, ArrowRight, Target } from 'lucide-react-native';
 
 export default function HomeScreen() {
@@ -43,10 +42,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient
-        colors={['#16a34a', '#15803d', '#166534']}
-        style={styles.gradient}
-      >
+      <View style={styles.headerBackground}>
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* Header */}
           <View style={styles.header}>
@@ -197,21 +193,16 @@ export default function HomeScreen() {
           <View style={styles.immediateActionsSection}>
             <Text style={styles.sectionTitle}>Immediate Actions</Text>
             <TouchableOpacity style={styles.actionCard}>
-              <LinearGradient
-                colors={['#3b82f6', '#1d4ed8']}
-                style={styles.actionGradient}
-              >
-                <View style={styles.actionContent}>
-                  <View style={styles.actionIcon}>
-                    <Target size={24} color="#ffffff" />
-                  </View>
-                  <View style={styles.actionText}>
-                    <Text style={styles.actionTitle}>Plant wheat in plot 3</Text>
-                    <Text style={styles.actionSubtitle}>Based on current weather and soil insights</Text>
-                  </View>
-                  <ArrowRight size={20} color="#ffffff" />
+              <View style={styles.actionContent}>
+                <View style={styles.actionIcon}>
+                  <Target size={24} color="#ffffff" />
                 </View>
-              </LinearGradient>
+                <View style={styles.actionText}>
+                  <Text style={styles.actionTitle}>Plant wheat in plot 3</Text>
+                  <Text style={styles.actionSubtitle}>Based on current weather and soil insights</Text>
+                </View>
+                <ArrowRight size={20} color="#ffffff" />
+              </View>
             </TouchableOpacity>
           </View>
 
@@ -299,7 +290,7 @@ export default function HomeScreen() {
             </View>
           </View>
         </ScrollView>
-      </LinearGradient>
+      </View>
     </SafeAreaView>
   );
 }
@@ -307,9 +298,11 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#f8fafc',
   },
-  gradient: {
+  headerBackground: {
     flex: 1,
+    backgroundColor: '#16a34a',
   },
   header: {
     flexDirection: 'row',
@@ -617,6 +610,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   actionCard: {
+    backgroundColor: '#3b82f6',
     borderRadius: 16,
     overflow: 'hidden',
     shadowColor: '#000',
@@ -625,12 +619,10 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 4,
   },
-  actionGradient: {
-    padding: 20,
-  },
   actionContent: {
     flexDirection: 'row',
     alignItems: 'center',
+    padding: 20,
   },
   actionIcon: {
     width: 48,

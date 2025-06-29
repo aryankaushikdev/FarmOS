@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { LinearGradient } from 'expo-linear-gradient';
 import { ArrowLeft, Bell, Sun, Thermometer, Droplets, Plus, TrendingUp, Calendar, ChartBar as BarChart3 } from 'lucide-react-native';
 
 export default function StatisticsScreen() {
@@ -73,10 +72,7 @@ export default function StatisticsScreen() {
 
         {/* Current Weather Card */}
         <View style={styles.weatherCard}>
-          <LinearGradient
-            colors={['#16a34a', '#15803d']}
-            style={styles.weatherGradient}
-          >
+          <View style={styles.weatherGradient}>
             <View style={styles.weatherHeader}>
               <View>
                 <Text style={styles.locationText}>Gravesend, Kent - 15 Jun 2024</Text>
@@ -91,7 +87,7 @@ export default function StatisticsScreen() {
             <Text style={styles.weatherAdvice}>
               🌾 Perfect harvest conditions for spring barley. Dry weather ideal for combining. Monitor sugar beet for aphid activity in warm temperatures.
             </Text>
-          </LinearGradient>
+          </View>
         </View>
 
         {/* Weekly Weather Predictions */}
@@ -209,13 +205,10 @@ export default function StatisticsScreen() {
 
           {/* Add New Note Button */}
           <TouchableOpacity style={styles.addNoteButton}>
-            <LinearGradient
-              colors={['#16a34a', '#15803d']}
-              style={styles.addNoteGradient}
-            >
+            <View style={styles.addNoteGradient}>
               <Plus size={20} color="#ffffff" />
               <Text style={styles.addNoteText}>Add Farm Observation</Text>
-            </LinearGradient>
+            </View>
           </TouchableOpacity>
         </View>
 
@@ -302,6 +295,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   weatherGradient: {
+    backgroundColor: '#16a34a',
     padding: 20,
   },
   weatherHeader: {
@@ -598,6 +592,7 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   addNoteGradient: {
+    backgroundColor: '#16a34a',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

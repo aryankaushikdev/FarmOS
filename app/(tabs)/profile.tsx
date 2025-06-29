@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Settings, Bell, User, MapPin, Calendar, Award, TrendingUp, Leaf, Shield, Phone, Mail } from 'lucide-react-native';
 
 export default function ProfileScreen() {
@@ -32,10 +31,7 @@ export default function ProfileScreen() {
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <LinearGradient
-          colors={['#16a34a', '#15803d', '#166534']}
-          style={styles.header}
-        >
+        <View style={styles.header}>
           <View style={styles.profileSection}>
             <View style={styles.profileImageContainer}>
               <Image
@@ -73,7 +69,7 @@ export default function ProfileScreen() {
               </View>
             ))}
           </View>
-        </LinearGradient>
+        </View>
 
         {/* Farm Overview */}
         <View style={styles.farmOverviewSection}>
@@ -177,6 +173,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8fafc',
   },
   header: {
+    backgroundColor: '#16a34a',
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 30,

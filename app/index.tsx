@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, TextInput, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { Eye, EyeOff, Mail, Lock, Leaf, TrendingUp, CloudRain, ChartBar as BarChart3, Users, Shield, ArrowRight, CircleCheck as CheckCircle } from 'lucide-react-native';
 
@@ -98,10 +97,7 @@ export default function LandingScreen() {
   if (showLogin) {
     return (
       <SafeAreaView style={styles.container}>
-        <LinearGradient
-          colors={['#16a34a', '#15803d', '#166534']}
-          style={styles.loginGradient}
-        >
+        <View style={styles.loginBackground}>
           <ScrollView contentContainerStyle={styles.loginScrollContainer}>
             {/* Header */}
             <View style={styles.loginHeader}>
@@ -192,7 +188,7 @@ export default function LandingScreen() {
               </View>
             </View>
           </ScrollView>
-        </LinearGradient>
+        </View>
       </SafeAreaView>
     );
   }
@@ -201,10 +197,7 @@ export default function LandingScreen() {
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Hero Section */}
-        <LinearGradient
-          colors={['#16a34a', '#15803d', '#166534']}
-          style={styles.heroSection}
-        >
+        <View style={styles.heroSection}>
           <View style={styles.heroContent}>
             <View style={styles.heroLogo}>
               <Leaf size={48} color="#ffffff" />
@@ -247,7 +240,7 @@ export default function LandingScreen() {
               </View>
             </View>
           </View>
-        </LinearGradient>
+        </View>
 
         {/* Features Section */}
         <View style={styles.featuresSection}>
@@ -271,10 +264,7 @@ export default function LandingScreen() {
 
         {/* Benefits Section */}
         <View style={styles.benefitsSection}>
-          <LinearGradient
-            colors={['#f8fafc', '#ffffff']}
-            style={styles.benefitsGradient}
-          >
+          <View style={styles.benefitsContainer}>
             <Text style={styles.sectionTitle}>Why Choose FarmOS?</Text>
             
             <View style={styles.benefitsList}>
@@ -308,7 +298,7 @@ export default function LandingScreen() {
                 </View>
               </View>
             </View>
-          </LinearGradient>
+          </View>
         </View>
 
         {/* Testimonials Section */}
@@ -335,10 +325,7 @@ export default function LandingScreen() {
         </View>
 
         {/* CTA Section */}
-        <LinearGradient
-          colors={['#16a34a', '#15803d']}
-          style={styles.ctaSection}
-        >
+        <View style={styles.ctaSection}>
           <Text style={styles.ctaTitle}>Ready to Transform Your Farm?</Text>
           <Text style={styles.ctaSubtitle}>
             Join thousands of farmers who are already using FarmOS to optimize their operations
@@ -351,7 +338,7 @@ export default function LandingScreen() {
             <Text style={styles.ctaButtonText}>Start Your Journey</Text>
             <ArrowRight size={20} color="#16a34a" />
           </TouchableOpacity>
-        </LinearGradient>
+        </View>
 
         {/* Footer */}
         <View style={styles.footer}>
@@ -376,6 +363,7 @@ const styles = StyleSheet.create({
   
   // Hero Section
   heroSection: {
+    backgroundColor: '#16a34a',
     paddingHorizontal: 20,
     paddingTop: 40,
     paddingBottom: 60,
@@ -541,7 +529,8 @@ const styles = StyleSheet.create({
   benefitsSection: {
     marginVertical: 20,
   },
-  benefitsGradient: {
+  benefitsContainer: {
+    backgroundColor: '#f8fafc',
     paddingHorizontal: 20,
     paddingVertical: 60,
   },
@@ -619,6 +608,7 @@ const styles = StyleSheet.create({
 
   // CTA Section
   ctaSection: {
+    backgroundColor: '#16a34a',
     paddingHorizontal: 20,
     paddingVertical: 60,
     alignItems: 'center',
@@ -678,8 +668,9 @@ const styles = StyleSheet.create({
   },
 
   // Login Styles
-  loginGradient: {
+  loginBackground: {
     flex: 1,
+    backgroundColor: '#16a34a',
   },
   loginScrollContainer: {
     flexGrow: 1,
