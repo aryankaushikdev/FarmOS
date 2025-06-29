@@ -2,71 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowLeft, Bell, Plus, Star, MapPin, Calendar, Droplets, Thermometer } from 'lucide-react-native';
+import { ArrowLeft, Bell, Mic, TrendingUp, MapPin, Calendar, Droplets, Thermometer, Zap, Target, DollarSign } from 'lucide-react-native';
 
-export default function FarmsScreen() {
-  const [selectedCrop, setSelectedCrop] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-
-  const crops = [
-    { 
-      id: 1, 
-      name: 'Winter Wheat', 
-      image: 'https://images.pexels.com/photos/326082/pexels-photo-326082.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-      season: 'Winter',
-      yield: 'High'
-    },
-    { 
-      id: 2, 
-      name: 'Winter Barley', 
-      image: 'https://images.pexels.com/photos/221016/pexels-photo-221016.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-      season: 'Winter',
-      yield: 'Medium'
-    },
-    { 
-      id: 3, 
-      name: 'Oil Seed Rape', 
-      image: 'https://images.pexels.com/photos/162209/rapeseed-field-yellow-nature-162209.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-      season: 'Autumn',
-      yield: 'High'
-    },
-    { 
-      id: 4, 
-      name: 'Sugar Beet', 
-      image: 'https://images.pexels.com/photos/4750270/pexels-photo-4750270.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop',
-      season: 'Spring',
-      yield: 'Very High'
-    },
-  ];
-
-  const relatedProducts = [
-    { 
-      id: 1, 
-      name: 'Organic Fertilizer', 
-      image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-      price: '£52/bag'
-    },
-    { 
-      id: 2, 
-      name: 'Seed Treatment', 
-      image: 'https://images.pexels.com/photos/1595105/pexels-photo-1595105.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-      price: '£34/L'
-    },
-    { 
-      id: 3, 
-      name: 'Irrigation Kit', 
-      image: 'https://images.pexels.com/photos/1595106/pexels-photo-1595106.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-      price: '£145/set'
-    },
-    { 
-      id: 4, 
-      name: 'Soil Tester', 
-      image: 'https://images.pexels.com/photos/1595107/pexels-photo-1595107.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-      price: '£95/unit'
-    },
-  ];
-
-  const currentCrop = crops[selectedCrop];
+export default function MyFarmScreen() {
+  const [showOptimized, setShowOptimized] = useState(false);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -76,157 +15,220 @@ export default function FarmsScreen() {
           <TouchableOpacity style={styles.backButton}>
             <ArrowLeft size={24} color="#1f2937" />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Crop Details</Text>
+          <Text style={styles.headerTitle}>MyFarm</Text>
           <TouchableOpacity style={styles.notificationButton}>
             <Bell size={24} color="#1f2937" />
             <View style={styles.notificationBadge} />
           </TouchableOpacity>
         </View>
 
-        {/* Main Crop Image */}
-        <View style={styles.mainImageContainer}>
-          <Image
-            source={{ uri: currentCrop.image }}
-            style={styles.mainImage}
-          />
-          <View style={styles.locationBadge}>
-            <MapPin size={12} color="#16a34a" />
-            <Text style={styles.locationBadgeText}>Gravesend Farm</Text>
+        {/* Farm Overview */}
+        <View style={styles.farmOverview}>
+          <View style={styles.farmHeader}>
+            <View>
+              <Text style={styles.farmName}>Gravesend Farm</Text>
+              <View style={styles.locationContainer}>
+                <MapPin size={16} color="#6b7280" />
+                <Text style={styles.locationText}>Kent, Thames Estuary</Text>
+              </View>
+            </View>
+            <View style={styles.farmStats}>
+              <Text style={styles.farmSize}>142 hectares</Text>
+              <Text style={styles.farmType}>Mixed Arable</Text>
+            </View>
           </View>
         </View>
 
-        {/* Crop Selection */}
-        <View style={styles.cropSelection}>
-          <View style={styles.selectionCircle}>
-            <View style={[styles.selectionIndicator, { left: `${selectedCrop * 25}%` }]} />
-          </View>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.cropScroll}>
-            {crops.map((crop, index) => (
-              <TouchableOpacity
-                key={crop.id}
-                style={[
-                  styles.cropOption,
-                  selectedCrop === index && styles.selectedCropOption
-                ]}
-                onPress={() => setSelectedCrop(index)}
-              >
-                <Image source={{ uri: crop.image }} style={styles.cropOptionImage} />
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </View>
-
-        {/* Product Info */}
-        <View style={styles.productInfo}>
-          <Text style={styles.productName}>{currentCrop.name} Seeds</Text>
-          <Text style={styles.availabilityText}>Available for planting</Text>
-          
-          <View style={styles.priceRow}>
-            <View style={styles.ratingContainer}>
-              <Star size={16} color="#fbbf24" fill="#fbbf24" />
-              <Text style={styles.ratingText}>4.8 (156 reviews)</Text>
+        {/* AI Optimization Alert */}
+        <View style={styles.aiAlert}>
+          <LinearGradient
+            colors={['#3b82f6', '#1d4ed8']}
+            style={styles.aiAlertGradient}
+          >
+            <View style={styles.aiAlertHeader}>
+              <Zap size={24} color="#ffffff" />
+              <Text style={styles.aiAlertTitle}>AI Optimization Available</Text>
             </View>
-            <View style={styles.priceContainer}>
-              <Text style={styles.price}>£95</Text>
-              <Text style={styles.priceUnit}>/hectare</Text>
-            </View>
-          </View>
-
-          {/* Crop Stats */}
-          <View style={styles.cropStats}>
-            <View style={styles.statItem}>
-              <Calendar size={16} color="#16a34a" />
-              <Text style={styles.statLabel}>Season</Text>
-              <Text style={styles.statValue}>{currentCrop.season}</Text>
-            </View>
-            <View style={styles.statItem}>
-              <Thermometer size={16} color="#f59e0b" />
-              <Text style={styles.statLabel}>Yield</Text>
-              <Text style={styles.statValue}>{currentCrop.yield}</Text>
-            </View>
-            <View style={styles.statItem}>
-              <Droplets size={16} color="#3b82f6" />
-              <Text style={styles.statLabel}>Water Need</Text>
-              <Text style={styles.statValue}>Medium</Text>
-            </View>
-          </View>
-
-          {/* Quantity Selector */}
-          <View style={styles.quantityContainer}>
-            <Text style={styles.quantityLabel}>Hectares to plant:</Text>
-            <View style={styles.quantitySelector}>
-              <TouchableOpacity
-                style={styles.quantityButton}
-                onPress={() => setQuantity(Math.max(1, quantity - 1))}
-              >
-                <Text style={styles.quantityButtonText}>-</Text>
-              </TouchableOpacity>
-              <Text style={styles.quantityText}>{quantity} ha</Text>
-              <TouchableOpacity
-                style={[styles.quantityButton, styles.quantityButtonAdd]}
-                onPress={() => setQuantity(quantity + 1)}
-              >
-                <Plus size={16} color="#ffffff" />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          {/* Growing Conditions */}
-          <View style={styles.conditionsSection}>
-            <Text style={styles.sectionTitle}>Optimal Growing Conditions for Kent</Text>
-            <View style={styles.conditionsList}>
-              <View style={styles.conditionItem}>
-                <Text style={styles.conditionLabel}>Soil pH:</Text>
-                <Text style={styles.conditionValue}>6.0 - 7.5</Text>
-              </View>
-              <View style={styles.conditionItem}>
-                <Text style={styles.conditionLabel}>Temperature:</Text>
-                <Text style={styles.conditionValue}>12°C - 22°C</Text>
-              </View>
-              <View style={styles.conditionItem}>
-                <Text style={styles.conditionLabel}>Rainfall:</Text>
-                <Text style={styles.conditionValue}>650-750mm/year</Text>
-              </View>
-              <View style={styles.conditionItem}>
-                <Text style={styles.conditionLabel}>Harvest time:</Text>
-                <Text style={styles.conditionValue}>July - August</Text>
-              </View>
-            </View>
-          </View>
-
-          {/* Description */}
-          <View style={styles.descriptionSection}>
-            <Text style={styles.sectionTitle}>Description</Text>
-            <Text style={styles.descriptionText}>
-              {currentCrop.name} is well-suited for Kent's Thames Estuary climate and heavy clay soils. This variety offers excellent disease resistance and consistent yields in the region's maritime conditions. Perfect for rotation with other crops...
-              <Text style={styles.readMoreText}> Read More</Text>
+            <Text style={styles.aiAlertText}>
+              Field 12 can be optimized for +21% profit increase
             </Text>
-          </View>
+          </LinearGradient>
+        </View>
 
-          {/* Related Products */}
-          <View style={styles.relatedSection}>
-            <Text style={styles.sectionTitle}>Recommended Supplies</Text>
-            <View style={styles.relatedGrid}>
-              {relatedProducts.map((product) => (
-                <TouchableOpacity key={product.id} style={styles.relatedItem}>
-                  <Image source={{ uri: product.image }} style={styles.relatedImage} />
-                  <Text style={styles.relatedName}>{product.name}</Text>
-                  <Text style={styles.relatedPrice}>{product.price}</Text>
-                </TouchableOpacity>
-              ))}
+        {/* Field Optimization Card */}
+        <View style={styles.optimizationCard}>
+          <View style={styles.optimizationHeader}>
+            <View style={styles.fieldInfo}>
+              <Text style={styles.fieldNumber}>Field 12</Text>
+              <Text style={styles.fieldSize}>8.5 hectares • Heavy Clay</Text>
+            </View>
+            <View style={styles.profitBadge}>
+              <TrendingUp size={16} color="#16a34a" />
+              <Text style={styles.profitIncrease}>+21%</Text>
             </View>
           </View>
 
-          {/* Add to Plan Button */}
-          <TouchableOpacity style={styles.addToPlanButton}>
+          {/* Current vs Optimized Toggle */}
+          <View style={styles.toggleContainer}>
+            <TouchableOpacity
+              style={[styles.toggleButton, !showOptimized && styles.toggleButtonActive]}
+              onPress={() => setShowOptimized(false)}
+            >
+              <Text style={[styles.toggleText, !showOptimized && styles.toggleTextActive]}>
+                Current Setup
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.toggleButton, showOptimized && styles.toggleButtonActive]}
+              onPress={() => setShowOptimized(true)}
+            >
+              <Text style={[styles.toggleText, showOptimized && styles.toggleTextActive]}>
+                AI Optimized
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Field Visualization */}
+          <View style={styles.fieldVisualization}>
+            <View style={styles.fieldMap}>
+              {!showOptimized ? (
+                // Current Layout - 100% Wheat
+                <View style={styles.currentField}>
+                  <View style={styles.wheatSection}>
+                    <Text style={styles.cropLabel}>100% Winter Wheat</Text>
+                  </View>
+                </View>
+              ) : (
+                // Optimized Layout - 85% Wheat + 15% Subsidy
+                <View style={styles.optimizedField}>
+                  <View style={styles.wheatSectionOptimized}>
+                    <Text style={styles.cropLabel}>85% Winter Wheat</Text>
+                  </View>
+                  <View style={styles.subsidySection}>
+                    <Text style={styles.cropLabelSubsidy}>15% Bird Food</Text>
+                  </View>
+                </View>
+              )}
+            </View>
+          </View>
+
+          {/* Yield Comparison */}
+          <View style={styles.yieldComparison}>
+            <View style={styles.yieldColumn}>
+              <Text style={styles.yieldLabel}>Current Yield</Text>
+              <Text style={styles.yieldValue}>£1,200</Text>
+              <Text style={styles.yieldUnit}>per hectare</Text>
+              <View style={styles.cropBreakdown}>
+                <Text style={styles.breakdownText}>100% Wheat: £1,200/ha</Text>
+              </View>
+            </View>
+            
+            <View style={styles.yieldArrow}>
+              <TrendingUp size={24} color="#16a34a" />
+            </View>
+            
+            <View style={styles.yieldColumn}>
+              <Text style={styles.yieldLabel}>AI Optimized</Text>
+              <Text style={[styles.yieldValue, styles.yieldValueOptimized]}>£1,456</Text>
+              <Text style={styles.yieldUnit}>per hectare</Text>
+              <View style={styles.cropBreakdown}>
+                <Text style={styles.breakdownText}>85% Wheat: £1,020/ha</Text>
+                <Text style={styles.breakdownText}>15% Subsidy: £436/ha</Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Profit Increase Highlight */}
+          <View style={styles.profitHighlight}>
             <LinearGradient
               colors={['#16a34a', '#15803d']}
-              style={styles.addToPlanGradient}
+              style={styles.profitGradient}
             >
-              <Plus size={20} color="#ffffff" />
-              <Text style={styles.addToPlanText}>Add to Planting Plan</Text>
+              <DollarSign size={32} color="#ffffff" />
+              <View style={styles.profitDetails}>
+                <Text style={styles.profitAmount}>+£256</Text>
+                <Text style={styles.profitText}>per hectare increase</Text>
+                <Text style={styles.profitPercentage}>+21% profit boost</Text>
+              </View>
             </LinearGradient>
-          </TouchableOpacity>
+          </View>
+
+          {/* Optimization Details */}
+          <View style={styles.optimizationDetails}>
+            <Text style={styles.detailsTitle}>Why This Works</Text>
+            <View style={styles.detailsList}>
+              <View style={styles.detailItem}>
+                <Target size={16} color="#16a34a" />
+                <Text style={styles.detailText}>
+                  Winter bird food subsidy: £2,900/hectare for 15% allocation
+                </Text>
+              </View>
+              <View style={styles.detailItem}>
+                <Calendar size={16} color="#3b82f6" />
+                <Text style={styles.detailText}>
+                  Optimal for Thames Estuary heavy clay soil conditions
+                </Text>
+              </View>
+              <View style={styles.detailItem}>
+                <Droplets size={16} color="#06b6d4" />
+                <Text style={styles.detailText}>
+                  Maintains soil health with diverse crop rotation
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          {/* Action Buttons */}
+          <View style={styles.actionButtons}>
+            <TouchableOpacity style={styles.applyButton}>
+              <LinearGradient
+                colors={['#16a34a', '#15803d']}
+                style={styles.applyGradient}
+              >
+                <Zap size={20} color="#ffffff" />
+                <Text style={styles.applyButtonText}>Apply AI Recommendation</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+            
+            <TouchableOpacity style={styles.voiceButton}>
+              <Mic size={20} color="#3b82f6" />
+              <Text style={styles.voiceButtonText}>Ask: "Optimize Field 12"</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Additional Farm Insights */}
+        <View style={styles.insightsSection}>
+          <Text style={styles.insightsTitle}>Farm Insights</Text>
+          
+          <View style={styles.insightCards}>
+            <View style={styles.insightCard}>
+              <View style={styles.insightIcon}>
+                <Thermometer size={20} color="#f59e0b" />
+              </View>
+              <Text style={styles.insightLabel}>Soil Temperature</Text>
+              <Text style={styles.insightValue}>8.2°C</Text>
+              <Text style={styles.insightStatus}>Optimal for winter crops</Text>
+            </View>
+            
+            <View style={styles.insightCard}>
+              <View style={styles.insightIcon}>
+                <Droplets size={20} color="#3b82f6" />
+              </View>
+              <Text style={styles.insightLabel}>Moisture Level</Text>
+              <Text style={styles.insightValue}>78%</Text>
+              <Text style={styles.insightStatus}>Good for establishment</Text>
+            </View>
+            
+            <View style={styles.insightCard}>
+              <View style={styles.insightIcon}>
+                <TrendingUp size={20} color="#16a34a" />
+              </View>
+              <Text style={styles.insightLabel}>Market Price</Text>
+              <Text style={styles.insightValue}>£195/t</Text>
+              <Text style={styles.insightStatus}>Wheat futures up 2%</Text>
+            </View>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -277,280 +279,393 @@ const styles = StyleSheet.create({
     backgroundColor: '#ef4444',
     borderRadius: 4,
   },
-  mainImageContainer: {
-    alignItems: 'center',
-    paddingVertical: 40,
+  farmOverview: {
     backgroundColor: '#ffffff',
-    position: 'relative',
-  },
-  mainImage: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-  },
-  locationBadge: {
-    position: 'absolute',
-    bottom: 50,
-    right: 50,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 12,
+    marginHorizontal: 20,
+    marginTop: 20,
+    borderRadius: 16,
+    padding: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
   },
-  locationBadgeText: {
-    fontSize: 10,
-    fontFamily: 'Inter-Medium',
-    color: '#16a34a',
-    marginLeft: 2,
-  },
-  cropSelection: {
-    alignItems: 'center',
-    paddingVertical: 20,
-    backgroundColor: '#ffffff',
-  },
-  selectionCircle: {
-    width: 300,
-    height: 2,
-    backgroundColor: '#e5e7eb',
-    borderRadius: 1,
-    marginBottom: 20,
-    position: 'relative',
-  },
-  selectionIndicator: {
-    position: 'absolute',
-    width: 40,
-    height: 2,
-    backgroundColor: '#16a34a',
-    borderRadius: 1,
-    transition: 'left 0.3s ease',
-  },
-  cropScroll: {
-    paddingHorizontal: 20,
-  },
-  cropOption: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginHorizontal: 8,
-    overflow: 'hidden',
-    borderWidth: 2,
-    borderColor: 'transparent',
-  },
-  selectedCropOption: {
-    borderColor: '#16a34a',
-  },
-  cropOptionImage: {
-    width: '100%',
-    height: '100%',
-  },
-  productInfo: {
-    backgroundColor: '#ffffff',
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    paddingHorizontal: 20,
-    paddingTop: 24,
-    marginTop: -24,
-  },
-  productName: {
-    fontSize: 24,
-    fontFamily: 'Inter-Bold',
-    color: '#1f2937',
-    marginBottom: 8,
-  },
-  availabilityText: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
-    color: '#16a34a',
-    marginBottom: 16,
-  },
-  priceRow: {
+  farmHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
   },
-  ratingContainer: {
+  farmName: {
+    fontSize: 20,
+    fontFamily: 'Inter-Bold',
+    color: '#1f2937',
+    marginBottom: 4,
+  },
+  locationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  ratingText: {
+  locationText: {
     fontSize: 14,
     fontFamily: 'Inter-Regular',
     color: '#6b7280',
     marginLeft: 4,
   },
-  priceContainer: {
-    flexDirection: 'row',
-    alignItems: 'baseline',
+  farmStats: {
+    alignItems: 'flex-end',
   },
-  price: {
-    fontSize: 24,
+  farmSize: {
+    fontSize: 18,
     fontFamily: 'Inter-Bold',
-    color: '#1f2937',
+    color: '#16a34a',
   },
-  priceUnit: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
-    color: '#6b7280',
-    marginLeft: 2,
-  },
-  cropStats: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#f8fafc',
-    padding: 16,
-    borderRadius: 12,
-    marginBottom: 20,
-  },
-  statItem: {
-    alignItems: 'center',
-    flex: 1,
-  },
-  statLabel: {
+  farmType: {
     fontSize: 12,
     fontFamily: 'Inter-Regular',
     color: '#6b7280',
-    marginTop: 4,
-    marginBottom: 2,
   },
-  statValue: {
-    fontSize: 14,
-    fontFamily: 'Inter-SemiBold',
-    color: '#1f2937',
+  aiAlert: {
+    marginHorizontal: 20,
+    marginTop: 16,
+    borderRadius: 16,
+    overflow: 'hidden',
   },
-  quantityContainer: {
-    marginBottom: 24,
-  },
-  quantityLabel: {
-    fontSize: 16,
-    fontFamily: 'Inter-Medium',
-    color: '#1f2937',
-    marginBottom: 12,
-  },
-  quantitySelector: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  quantityButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: '#f1f5f9',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  quantityButtonAdd: {
-    backgroundColor: '#16a34a',
-  },
-  quantityButtonText: {
-    fontSize: 18,
-    fontFamily: 'Inter-SemiBold',
-    color: '#6b7280',
-  },
-  quantityText: {
-    fontSize: 16,
-    fontFamily: 'Inter-SemiBold',
-    color: '#1f2937',
-    marginHorizontal: 16,
-  },
-  conditionsSection: {
-    marginBottom: 24,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontFamily: 'Inter-SemiBold',
-    color: '#1f2937',
-    marginBottom: 12,
-  },
-  conditionsList: {
-    backgroundColor: '#f8fafc',
-    borderRadius: 12,
+  aiAlertGradient: {
     padding: 16,
   },
-  conditionItem: {
+  aiAlertHeader: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
-  },
-  conditionLabel: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
-    color: '#6b7280',
-  },
-  conditionValue: {
-    fontSize: 14,
-    fontFamily: 'Inter-SemiBold',
-    color: '#1f2937',
-  },
-  descriptionSection: {
-    marginBottom: 24,
-  },
-  descriptionText: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
-    color: '#6b7280',
-    lineHeight: 20,
-  },
-  readMoreText: {
-    color: '#16a34a',
-    fontFamily: 'Inter-SemiBold',
-  },
-  relatedSection: {
-    marginBottom: 32,
-  },
-  relatedGrid: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-  },
-  relatedItem: {
-    width: '48%',
-    backgroundColor: '#f8fafc',
-    borderRadius: 12,
-    padding: 12,
-    marginBottom: 12,
-  },
-  relatedImage: {
-    width: '100%',
-    height: 80,
-    borderRadius: 8,
+    alignItems: 'center',
     marginBottom: 8,
   },
-  relatedName: {
-    fontSize: 12,
-    fontFamily: 'Inter-SemiBold',
-    color: '#1f2937',
-    marginBottom: 4,
-  },
-  relatedPrice: {
-    fontSize: 12,
-    fontFamily: 'Inter-Regular',
-    color: '#16a34a',
-  },
-  addToPlanButton: {
-    marginBottom: 32,
-  },
-  addToPlanGradient: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 16,
-    borderRadius: 16,
-  },
-  addToPlanText: {
+  aiAlertTitle: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
     color: '#ffffff',
     marginLeft: 8,
+  },
+  aiAlertText: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#dbeafe',
+  },
+  optimizationCard: {
+    backgroundColor: '#ffffff',
+    marginHorizontal: 20,
+    marginTop: 16,
+    borderRadius: 20,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  optimizationHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  fieldInfo: {
+    flex: 1,
+  },
+  fieldNumber: {
+    fontSize: 24,
+    fontFamily: 'Inter-Bold',
+    color: '#1f2937',
+    marginBottom: 4,
+  },
+  fieldSize: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#6b7280',
+  },
+  profitBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#dcfce7',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+  },
+  profitIncrease: {
+    fontSize: 16,
+    fontFamily: 'Inter-Bold',
+    color: '#16a34a',
+    marginLeft: 4,
+  },
+  toggleContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#f1f5f9',
+    borderRadius: 12,
+    padding: 4,
+    marginBottom: 20,
+  },
+  toggleButton: {
+    flex: 1,
+    paddingVertical: 12,
+    alignItems: 'center',
+    borderRadius: 8,
+  },
+  toggleButtonActive: {
+    backgroundColor: '#ffffff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  toggleText: {
+    fontSize: 14,
+    fontFamily: 'Inter-Medium',
+    color: '#6b7280',
+  },
+  toggleTextActive: {
+    color: '#1f2937',
+  },
+  fieldVisualization: {
+    marginBottom: 24,
+  },
+  fieldMap: {
+    height: 120,
+    borderRadius: 12,
+    overflow: 'hidden',
+    borderWidth: 2,
+    borderColor: '#e5e7eb',
+  },
+  currentField: {
+    flex: 1,
+    backgroundColor: '#16a34a',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  wheatSection: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: '#16a34a',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  optimizedField: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  wheatSectionOptimized: {
+    flex: 0.85,
+    backgroundColor: '#16a34a',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  subsidySection: {
+    flex: 0.15,
+    backgroundColor: '#f59e0b',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cropLabel: {
+    fontSize: 12,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
+    textAlign: 'center',
+  },
+  cropLabelSubsidy: {
+    fontSize: 10,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
+    textAlign: 'center',
+    transform: [{ rotate: '90deg' }],
+  },
+  yieldComparison: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 24,
+    backgroundColor: '#f8fafc',
+    borderRadius: 16,
+    padding: 20,
+  },
+  yieldColumn: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  yieldLabel: {
+    fontSize: 12,
+    fontFamily: 'Inter-Regular',
+    color: '#6b7280',
+    marginBottom: 8,
+  },
+  yieldValue: {
+    fontSize: 28,
+    fontFamily: 'Inter-Bold',
+    color: '#1f2937',
+    marginBottom: 4,
+  },
+  yieldValueOptimized: {
+    color: '#16a34a',
+  },
+  yieldUnit: {
+    fontSize: 12,
+    fontFamily: 'Inter-Regular',
+    color: '#6b7280',
+    marginBottom: 12,
+  },
+  yieldArrow: {
+    marginHorizontal: 20,
+  },
+  cropBreakdown: {
+    alignItems: 'center',
+  },
+  breakdownText: {
+    fontSize: 10,
+    fontFamily: 'Inter-Regular',
+    color: '#6b7280',
+    marginBottom: 2,
+  },
+  profitHighlight: {
+    marginBottom: 24,
+    borderRadius: 16,
+    overflow: 'hidden',
+  },
+  profitGradient: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+  },
+  profitDetails: {
+    marginLeft: 16,
+    flex: 1,
+  },
+  profitAmount: {
+    fontSize: 32,
+    fontFamily: 'Inter-Bold',
+    color: '#ffffff',
+    marginBottom: 4,
+  },
+  profitText: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#dcfce7',
+    marginBottom: 2,
+  },
+  profitPercentage: {
+    fontSize: 16,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
+  },
+  optimizationDetails: {
+    marginBottom: 24,
+  },
+  detailsTitle: {
+    fontSize: 16,
+    fontFamily: 'Inter-SemiBold',
+    color: '#1f2937',
+    marginBottom: 12,
+  },
+  detailsList: {
+    gap: 12,
+  },
+  detailItem: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  detailText: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#6b7280',
+    marginLeft: 12,
+    flex: 1,
+    lineHeight: 20,
+  },
+  actionButtons: {
+    gap: 12,
+  },
+  applyButton: {
+    borderRadius: 16,
+    overflow: 'hidden',
+  },
+  applyGradient: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
+  },
+  applyButtonText: {
+    fontSize: 16,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
+    marginLeft: 8,
+  },
+  voiceButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#eff6ff',
+    paddingVertical: 16,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#3b82f6',
+  },
+  voiceButtonText: {
+    fontSize: 14,
+    fontFamily: 'Inter-Medium',
+    color: '#3b82f6',
+    marginLeft: 8,
+  },
+  insightsSection: {
+    paddingHorizontal: 20,
+    paddingVertical: 24,
+  },
+  insightsTitle: {
+    fontSize: 20,
+    fontFamily: 'Inter-Bold',
+    color: '#1f2937',
+    marginBottom: 16,
+  },
+  insightCards: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  insightCard: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+    borderRadius: 12,
+    padding: 16,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  insightIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#f8fafc',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 8,
+  },
+  insightLabel: {
+    fontSize: 12,
+    fontFamily: 'Inter-Regular',
+    color: '#6b7280',
+    marginBottom: 4,
+    textAlign: 'center',
+  },
+  insightValue: {
+    fontSize: 16,
+    fontFamily: 'Inter-Bold',
+    color: '#1f2937',
+    marginBottom: 4,
+  },
+  insightStatus: {
+    fontSize: 10,
+    fontFamily: 'Inter-Regular',
+    color: '#16a34a',
+    textAlign: 'center',
   },
 });

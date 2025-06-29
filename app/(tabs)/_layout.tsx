@@ -37,7 +37,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="farms"
         options={{
-          title: 'All Farms',
+          title: 'MyFarm',
           tabBarIcon: ({ size, color }) => (
             <Leaf size={size} color={color} />
           ),
